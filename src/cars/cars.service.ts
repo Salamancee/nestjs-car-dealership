@@ -5,23 +5,7 @@ import { v4 as uuid } from 'uuid';
 
 @Injectable()
 export class CarsService {
-    public cars: Car[] = [
-        {
-            id: uuid(),
-            brand: 'Toyota',
-            model: 'Corolla'
-        },
-        {
-            id: uuid(),
-            brand: 'Honda',
-            model: 'Civic'
-        },
-        {
-            id: uuid(),
-            brand: 'Jeep',
-            model: 'Cherokee'
-        },
-    ];
+    public cars: Car[] = [];
 
     public createCar(createCarDto: CreateCarDto){
         const newCar = {
@@ -60,5 +44,9 @@ export class CarsService {
     public deleteCarById(id: string){
         this.findCarById(id);
         this.cars = this.cars.filter(car => car.id != id);
+    }
+
+    fillCarsWithSeedData( cars: Car[] ){
+        this.cars = cars;
     }
 }
